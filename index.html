@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll-snap</title>
+
+    <link href="https://dev.iconly.io/public/gZ9X2NucmsiK/iconly.css" rel="stylesheet" />
+    <link rel="stylesheet" href="scroll-snap.css">
+    <script defer src="./scroll-snap.js"></script>
+
+</head>
+
+<body>
+
+    <section class="scroll-snap-container ">
+
+        <div class="scroll-snap scroll">
+
+            <div class="item-container">
+
+                <div class="info-container">
+
+                    <div class="left">
+
+                        <h2 class="card-title">Graves</h2>
+                        <small>The outlaw</small>
+
+                    </div>
+
+                    <img class="class-icon" src="#" alt="Marksman">
+
+                </div>
+
+                <img class="background" src="#" alt="back">
+
+            </div>
+
+            <div class="item-container">
+
+                <div class="info-container">
+
+                    <div class="left">
+
+                        <h2 class="card-title">Talon</h2>
+                        <small>The blade's shadow</small>
+
+                    </div>
+
+                    <img class="class-icon" src="#" alt="Assasin">
+
+                </div>
+
+                <img class="background" src="#" alt="back">
+
+            </div>
+
+            <div class="item-container">
+
+                <div class="info-container">
+
+                    <div class="left">
+
+                        <h2 class="card-title">Jarvan</h2>
+                        <small>The exemplar of Demacia</small>
+
+                    </div>
+
+                    <img class="class-icon" src="#" alt="Tank">
+
+                </div>
+
+                <img class="background" src="#" alt="back">
+
+            </div>
+
+            <div class="item-container">
+
+                <div class="info-container">
+
+                    <div class="left">
+
+                        <h2 class="card-title">Milio</h2>
+                        <small>The gentle flame</small>
+
+                    </div>
+
+                    <img class="class-icon" src="#" alt="Support">
+
+                </div>
+
+                <img class="background" src="#" alt="back">
+
+            </div>
+
+            <div class="item-container">
+
+                <div class="info-container">
+
+                    <div class="left">
+
+                        <h2 class="card-title">Azir</h2>
+                        <small>The emperor of the sands</small>
+
+                    </div>
+
+                    <img class="class-icon" src="#" alt="Mage">
+
+                </div>
+
+                <img class="background" src="#" alt="back">
+
+            </div>
+
+            <div class="item-container">
+
+                <div class="info-container">
+
+                    <div class="left">
+
+                        <h2 class="card-title">Yasuo</h2>
+                        <small>The unforgiven</small>
+
+                    </div>
+
+                    <img class="class-icon" src="#" alt="Fighter">
+
+                </div>
+
+                <img class="background" src="#" alt="back">
+
+            </div>
+
+        </div>
+
+        <div class="button-container">
+            <button class="btn prev"><span class="icon-arrow-r"></span></button>
+            <button class="btn next"><span class="icon-arrow-r"></span></button>
+        </div>
+
+    </section>
+
+    <script>
+        const carousel = document.querySelector('.scroll-snap');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+
+        prevButton.addEventListener('click', () => {
+            carousel.scrollLeft -= carousel.offsetWidth;
+        });
+
+        nextButton.addEventListener('click', () => {
+            carousel.scrollLeft += carousel.offsetWidth;
+        });
+
+    </script>
+
+</body>
+
+</html>
