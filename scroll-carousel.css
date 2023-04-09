@@ -1,10 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap");
 
 :root {
   --dark-1: #1b1c1e;
   --dark-2: #1f1f1f;
   --dark-3: #2b2b2b;
   --dark-4: #303030;
+  --dark-5: #3d3d3d;
+  --main: #a4b274;
 }
 
 * {
@@ -18,7 +20,7 @@ body {
   width: 100%;
   height: 100%;
 
-  background-color: var(--dark-4);
+  background-color: var(--dark-5);
 }
 
 body {
@@ -27,7 +29,7 @@ body {
   align-items: center;
   justify-content: center;
 
-  font-family: "Poppins", sans-serif;
+  font-family: "Work Sans", monospace;
 }
 
 .scroll-snap-container {
@@ -40,7 +42,6 @@ body {
 
   border-radius: 4px;
 
-  border: 1px solid #daa52072;
   background-color: var(--dark-2);
   box-shadow: 0px 24px 38px 3px rgba(0, 0, 0, 0.14),
     0px 9px 46px 8px rgba(0, 0, 0, 0.12), 0px 11px 15px -7px rgba(0, 0, 0, 0.2);
@@ -52,9 +53,10 @@ body {
 
   width: 100%;
   height: 100%;
-  /* padding-bottom: 12px; */
 
   border-radius: 2px;
+
+  border: 1px solid var(--dark-4);
 }
 
 .item-container {
@@ -91,7 +93,7 @@ body {
 
 .item-container .info-container {
   position: absolute;
-  top: 100%;
+  inset: 0;
 
   display: flex;
   justify-content: space-between;
@@ -103,10 +105,6 @@ body {
 
   background: linear-gradient(to bottom, transparent, #000000e2 100%);
   transition: all 0.8s ease;
-}
-
-.item-container:hover .info-container {
-  top: 0px;
 }
 
 .info-container .left {
@@ -124,6 +122,7 @@ body {
 }
 
 .left small {
+  font-size: 14px;
   color: ghostwhite;
   margin-top: 4px;
 }
@@ -148,11 +147,15 @@ body {
   scrollbar-width: none;
 }
 
-.scroll::-webkit-scrollbar,
-.scroll::-moz-scrollbar {
+.scroll::-webkit-scrollbar {
   display: none;
-  width: 12px;
-  height: 8px;
+}
+
+/* .scroll::-webkit-scrollbar,
+.scroll::-moz-scrollbar {
+  width: none;
+  height: none;
+  display: none;
 }
 
 .scroll::-webkit-scrollbar-track,
@@ -165,7 +168,7 @@ body {
 .scroll::-moz-scrollbar-thumb {
   border: 1px solid #ffffff2b;
   border-radius: 2px;
-}
+} */
 
 .button-container {
   display: flex;
@@ -178,13 +181,8 @@ body {
 .button-container .btn {
   width: 50%;
 
-  background-color: rgb(208, 178, 102);
-  background-image: radial-gradient(
-      at 43% 22%,
-      hsla(37, 52%, 56%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 14% 71%, rgb(223, 181, 122) 0px, transparent 50%);
+  background-color: var(--main);
+
   border: none;
   border-radius: 2px;
 
