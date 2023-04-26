@@ -1,3 +1,4 @@
+// Ingresar imagenes
 const cards = document.querySelectorAll(".item-container");
 
 cards.forEach((card) => {
@@ -27,32 +28,97 @@ iconImgs.forEach((img) => {
   img.setAttribute("src", newSrc);
 });
 
-//Código para arrastrar los slides
+// Detectar la cantidad de elementos con la clase "item-container"
+const itemContainers = document.querySelectorAll(".item-container");
+const numItems = itemContainers.length;
 
-const scrollContainer = document.querySelector(".scroll-snap");
+// Crear los puntos de posición
+const dotContainer = document.querySelector(".dot-container");
+for (let i = 0; i < numItems; i++) {
+  const dot = document.createElement("span");
+  dot.classList.add("position-dot");
+  dotContainer.appendChild(dot);
+}
 
-let isDown = false;
-let startX;
-let scrollLeft;
+// Añadir la clase "active" al primer punto de posición
+const positionDots = document.querySelectorAll(".position-dot");
+positionDots[0].classList.add("active");
 
-scrollContainer.addEventListener("mousedown", (e) => {
-  isDown = true;
-  startX = e.pageX - scrollContainer.offsetLeft;
-  scrollLeft = scrollContainer.scrollLeft;
+// Añadir los listeners de evento para los botones "next" y "prev"
+const prevButton = document.querySelector(".prev");
+const nextButton = document.querySelector(".next");
+const carousel = document.querySelector(".scroll-snap");
+const itemScrollContainers = document.querySelectorAll(
+  ".scroll-snap-container"
+);
+const itemContainerWidth = itemScrollContainers[0].offsetWidth;
+let currentPosition = 0;
+
+prevButton.addEventListener("click", () => {
+  // Encontrar el punto de posición activo y remover la clase "active"
+  const activeDot = document.querySelector(".position-dot.active");
+  activeDot.classList.remove("active");
+
+  // Encontrar el índice del punto de posición activo y calcular el índice del punto de posición anterior
+  const activeIndex = Array.from(positionDots).indexOf(activeDot);
+  const prevIndex = activeIndex === 0 ? numItems - 1 : activeIndex - 1;
+
+  // Añadir la clase "active" al punto de posición anterior
+  positionDots[prevIndex].classList.add("active");
+
+  // Hacer scroll al inicio del carrusel si se encuentra en el primer elemento
+  if (currentPosition === 0) {
+    carousel.scrollLeft = itemContainerWidth * (numItems - 1);
+    currentPosition = itemContainerWidth * (numItems - 1);
+  } else {
+    carousel.scrollLeft -= itemContainerWidth;
+    currentPosition -= itemContainerWidth;
+  }
 });
 
-scrollContainer.addEventListener("mouseleave", () => {
-  isDown = false;
+nextButton.addEventListener("click", () => {
+  // Encontrar el punto de posición activo y remover la clase "active"
+  const activeDot = document.querySelector(".position-dot.active");
+  activeDot.classList.remove("active");
+
+  // Encontrar el índice del punto de posición activo y calcular el índice del punto de posición siguiente
+  const activeIndex = Array.from(positionDots).indexOf(activeDot);
+  const nextIndex = activeIndex === numItems - 1 ? 0 : activeIndex + 1;
+
+  // Añadir la clase "active" al punto de posición siguiente
+  positionDots[nextIndex].classList.add("active");
+
+  // Hacer scroll al inicio del carrusel si se encuentra en el último elemento
+  if (currentPosition === itemContainerWidth * (numItems - 1)) {
+    carousel.scrollLeft = 0;
+    currentPosition = 0;
+
+    // Actualizar el punto de posición activo
+    activeDot.classList.remove("active");
+    positionDots[0].classList.add("active");
+  } else {
+    carousel.scrollLeft += itemContainerWidth;
+    currentPosition += itemContainerWidth;
+  }
+  console.log(currentPosition);
 });
 
-scrollContainer.addEventListener("mouseup", () => {
-  isDown = false;
-});
+// Agregar listeners de evento para los puntos de posición
 
-scrollContainer.addEventListener("mousemove", (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - scrollContainer.offsetLeft;
-  const walk = (x - startX) * 1; // Ajustar la velocidad de desplazamiento
-  scrollContainer.scrollLeft = scrollLeft - walk;
+positionDots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    // Encontrar el punto de posición activo y remover la clase "active"
+    const activeDot = document.querySelector(".position-dot.active");
+    activeDot.classList.remove("active");
+
+    // Agregar la clase "active" al punto de posición seleccionado
+    dot.classList.add("active");
+
+    // Hacer scroll hacia la imagen correspondiente en el carrusel
+    const scrollPosition = index * itemContainerWidth;
+    carousel.scrollLeft = scrollPosition;
+    currentPosition = scrollPosition;
+
+    console.log(scrollPosition);
+  });
 });

@@ -9,6 +9,7 @@
 
     <link href="https://dev.iconly.io/public/gZ9X2NucmsiK/iconly.css" rel="stylesheet" />
     <link rel="stylesheet" href="scroll-carousel.css">
+
     <script defer src="./scroll-carousel.js"></script>
 
 </head>
@@ -19,7 +20,7 @@
 
         <div class="scroll-snap scroll">
 
-            <div class="item-container">
+            <div class="item-container active">
 
                 <div class="info-container">
 
@@ -133,28 +134,71 @@
 
             </div>
 
+            <div class="item-container">
+
+                <div class="info-container">
+
+                    <div class="left">
+
+                        <h2 class="card-title">Udyr</h2>
+                        <small>The beast</small>
+
+                    </div>
+
+                    <img class="class-icon" src="#" alt="Fighter">
+
+                </div>
+
+                <img class="background" src="#" alt="back">
+
+            </div>
+
+            <div class="item-container">
+
+                <div class="info-container">
+
+                    <div class="left">
+
+                        <h2 class="card-title">Olaf</h2>
+                        <small>The berserker</small>
+
+                    </div>
+
+                    <img class="class-icon" src="#" alt="Fighter">
+
+                </div>
+
+                <img class="background" src="#" alt="back">
+
+            </div>
+
         </div>
 
         <div class="button-container">
-            <button class="btn prev"><span class="icon-arrow-r"></span></button>
-            <button class="btn next"><span class="icon-arrow-r"></span></button>
+
+            <div class="dot-container">
+
+                <!-- 
+                <span class="position-dot active"></span>
+                <span class="position-dot"></span>
+                <span class="position-dot"></span>
+                <span class="position-dot"></span>
+                <span class="position-dot"></span> 
+                -->
+
+            </div>
+            <div class="btn-box">
+
+                <button class="btn prev"><span class="icon-arrow-r"></span></button>
+                <button class="btn next"><span class="icon-arrow-r"></span></button>
+
+            </div>
+
         </div>
 
     </section>
 
     <script>
-
-        const carousel = document.querySelector('.scroll-snap');
-        const prevButton = document.querySelector('.prev');
-        const nextButton = document.querySelector('.next');
-
-        prevButton.addEventListener('click', () => {
-            carousel.scrollLeft -= carousel.offsetWidth;
-        });
-
-        nextButton.addEventListener('click', () => {
-            carousel.scrollLeft += carousel.offsetWidth;
-        });
 
     </script>
 
