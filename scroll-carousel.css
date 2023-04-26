@@ -35,7 +35,9 @@ body {
 .scroll-snap-container {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  /* width: 500px; */
+  max-width: 600px;
+  min-width: 350px;
   height: 400px;
   gap: 8px;
 
@@ -72,13 +74,7 @@ body {
 
   user-select: none;
 
-  cursor: grab;
-
   font-size: 14px;
-}
-
-.item-container:active {
-  cursor: grabbing;
 }
 
 .item-container img {
@@ -138,8 +134,6 @@ body {
 }
 
 .scroll {
-  cursor: pointer;
-
   overflow-x: scroll;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
